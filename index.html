@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Meta CSP: frame-ancestors burada çalışmaz; tıklama hırsızlığı koruması için sunucu başlığı gerekir. API ekleyince connect-src'ye adresini yaz. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://YOUR-WORKER.workers.dev https://YOUR-PROJECT.supabase.co; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Murmur — Yapay zekâ arkadaş</title>
+<meta name="description" content="Anime ya da gerçekçi tarzda bir yapay zekâ karakter seç, onunla sohbet et. Karakterler yapay zekâdır; site 18 yaş ve üzeri içindir.">
+<meta name="theme-color" content="#F4F0FB">
+<link rel="canonical" href="https://example.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Murmur">
+<meta property="og:title" content="Murmur — Yapay zekâ arkadaş">
+<meta property="og:description" content="Anime ya da gerçekçi tarzda bir karakter seç. Seni dinleyen, hatırlayan biriyle sohbet et.">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="https://example.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Murmur — Yapay zekâ arkadaş">
+<meta name="twitter:description" content="Anime ya da gerçekçi tarzda bir karakter seç ve sohbet et.">
+<meta name="twitter:image" content="https://example.com/og-image.png">
+<meta name="twitter:image:alt" content="Murmur logosu ve sloganı">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Murmur","url":"https://example.com/","description":"Yapay zekâ karakterlerle sohbet platformu (18+).","inLanguage":["tr","en"]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Ana içeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="./" aria-label="Murmur">Murmur<i></i></a>
+    <nav class="main" aria-label="Ana menü">
+      <a href="#characters" data-i18n="nav_chars">Karakterler</a>
+      <a href="#plans" data-i18n="nav_plans">Planlar</a>
+    </nav>
+    <button class="lang" id="lang-btn" aria-label="Language / Dil">EN</button>
+    <button class="btn btn-ghost btn-small" id="login-btn" data-i18n="login">Giriş yap</button>
+  </div>
+</header>
+
+<noscript><div class="wrap">Bu site için JavaScript gerekir. / This site requires JavaScript.</div></noscript>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 data-i18n="hero_h1">Seni dinleyen, hatırlayan biri.</h1>
+        <p class="lead" data-i18n="hero_p">Anime ya da gerçekçi tarzda bir karakter seç. Günün nasıl geçtiğini, ne dinlediğini, neyi merak ettiğini anlat. Sohbet kaldığı yerden devam eder.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#characters" data-i18n="cta1">Karakterle tanış</a>
+          <a class="btn btn-ghost" href="#plans" data-i18n="cta2">Planlara bak</a>
+        </div>
+      </div>
+      <div class="phone" role="group" aria-label="Örnek sohbet / Sample chat">
+        <div class="phone-head">
+          <div class="avatar" id="demo-avatar" aria-hidden="true"></div>
+          <div><b id="demo-name">Mara</b><span class="ai-tag" data-i18n="ai_label">Yapay zekâ</span><small data-i18n="online">çevrimiçi</small></div>
+        </div>
+        <div class="msgs" id="demo-msgs"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feats" aria-label="Özellikler">
+    <div class="wrap">
+      <div><h3 data-i18n="f1t">Seni hatırlar</h3><p data-i18n="f1p">Önceki sohbetlerdeki ayrıntıları aklında tutar.</p></div>
+      <div><h3 data-i18n="f2t">Her zaman orada</h3><p data-i18n="f2p">Saat kaç olursa olsun cevap verir.</p></div>
+      <div><h3 data-i18n="f3t">Şeffaf ve güvenli</h3><p data-i18n="f3p">Karakterler her zaman yapay zekâ olduğunu söyler; zor anlarda destek kaynaklarını gösterir.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="characters">
+    <div class="wrap">
+      <h2 data-i18n="chars_h">Karakterini seç</h2>
+      <p class="sub" data-i18n="chars_p">Hepsi yapay zekâ ile oluşturulmuş kurgusal karakterlerdir.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filtre / Filter">
+        <button data-f="all" aria-pressed="true" data-i18n="f_all">Hepsi</button>
+        <button data-f="anime" aria-pressed="false" data-i18n="f_anime">Anime</button>
+        <button data-f="real" aria-pressed="false" data-i18n="f_real">Realistik</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="plans">
+    <div class="wrap">
+      <h2 data-i18n="plans_h">Sana uyan planı seç</h2>
+      <p class="sub" data-i18n="plans_p">İstediğin zaman iptal edebilirsin.</p>
+      <div class="plans" id="plan-list"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-i18n="foot">Murmur 18 yaş ve üzeri içindir. Karakterler yapay zekâdır, gerçek kişi değildir.</p>
+    <nav class="links" aria-label="Yasal / Legal">
+      <a href="privacy.html" data-i18n="l_privacy">Gizlilik</a>
+      <a href="terms.html" data-i18n="l_terms">Kullanım koşulları</a>
+      <a href="safety.html" data-i18n="l_safety">Güvenlik ve kriz desteği</a>
+      <a href="mailto:iletisim@example.com" data-i18n="l_contact">İletişim</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog id="chat" aria-label="Sohbet / Chat">
+  <div class="chat-head">
+    <div class="avatar" id="chat-avatar" aria-hidden="true"></div>
+    <div><b id="chat-name"></b><span class="ai-tag" data-i18n="ai_label">Yapay zekâ</span><small id="chat-role"></small></div>
+    <button class="x" id="chat-close" aria-label="Kapat / Close">&times;</button>
+  </div>
+  <div class="msgs" id="chat-msgs" aria-live="polite"></div>
+  <p class="chat-note" id="chat-note"></p>
+  <form class="chat-form" id="chat-form" autocomplete="off">
+    <input id="chat-input" type="text" maxlength="500" data-i18n-ph="ph" aria-label="Mesaj / Message" required>
+    <button class="btn btn-primary" type="submit" data-i18n="send">Gönder</button>
+  </form>
+</dialog>
+
+<dialog id="gate" class="gate" aria-labelledby="gate-h">
+  <h2 id="gate-h" data-i18n="gate_h">18 yaşında veya daha büyük müsün?</h2>
+  <p id="gate-p" data-i18n="gate_p">Murmur yalnızca yetişkinler içindir. Devam etmek için yaşını onaylaman gerekir.</p>
+  <div class="actions" id="gate-actions">
+    <button class="btn btn-primary" id="gate-yes" data-i18n="gate_yes">Evet, 18 veya üzeriyim</button>
+    <button class="btn btn-ghost" id="gate-no" data-i18n="gate_no">Hayır</button>
+  </div>
+</dialog>
+
+<dialog id="login" class="gate" aria-labelledby="login-h">
+  <h2 id="login-h" data-i18n="login_h">Giriş yap</h2>
+  <p data-i18n="login_p">E-posta adresine bir giriş bağlantısı ve kod göndeririz. Şifre gerekmez.</p>
+  <form id="login-form" class="stack" autocomplete="on">
+    <label class="sr" for="login-email" data-i18n="email_label">E-posta</label>
+    <input class="input" id="login-email" type="email" required autocomplete="email" data-i18n-ph="email_ph">
+    <button class="btn btn-primary" type="submit" data-i18n="send_link">Bağlantı gönder</button>
+  </form>
+  <form id="code-form" class="stack" hidden autocomplete="off">
+    <p id="login-msg" role="status"></p>
+    <label class="sr" for="login-code" data-i18n="code_label">Kod</label>
+    <input class="input" id="login-code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" data-i18n-ph="code_ph">
+    <button class="btn btn-primary" type="submit" data-i18n="verify">Doğrula</button>
+  </form>
+  <div class="stack"><button class="btn btn-ghost btn-small" id="login-close" type="button" data-i18n="close">Kapat</button></div>
+</dialog>
+
+<dialog id="acct" class="gate" aria-labelledby="acct-h">
+  <h2 id="acct-h" data-i18n="acct">Hesap</h2>
+  <dl class="acct-info">
+    <dt data-i18n="acct_email">E-posta</dt><dd id="acct-email"></dd>
+    <dt data-i18n="acct_plan">Plan</dt><dd id="acct-plan"></dd>
+    <dt data-i18n="acct_left">Bugün kalan mesaj</dt><dd id="acct-left"></dd>
+  </dl>
+  <div class="stack">
+    <button class="btn btn-ghost" id="acct-manage" type="button" data-i18n="acct_manage" hidden>Aboneliği yönet</button>
+    <button class="btn btn-ghost" id="acct-export" type="button" data-i18n="acct_export">Verilerimi indir</button>
+    <button class="btn btn-ghost" id="acct-logout" type="button" data-i18n="acct_logout">Çıkış yap</button>
+    <button class="btn btn-danger" id="acct-delete" type="button" data-i18n="acct_delete">Hesabı sil</button>
+    <button class="btn btn-primary btn-small" id="acct-close" type="button" data-i18n="close">Kapat</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+</body>
+</html>
